@@ -10,9 +10,13 @@
 		B752E2C12C9897A700B88C4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752E2C02C9897A700B88C4B /* AppDelegate.swift */; };
 		B752E2C32C9897A700B88C4B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752E2C22C9897A700B88C4B /* SceneDelegate.swift */; };
 		B752E2C52C9897A700B88C4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B752E2C42C9897A700B88C4B /* ViewController.swift */; };
-		B752E2C82C9897A700B88C4B /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B752E2C72C9897A700B88C4B /* Base */; };
 		B752E2CA2C9897A800B88C4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B752E2C92C9897A800B88C4B /* Assets.xcassets */; };
 		B752E2CD2C9897A800B88C4B /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B752E2CC2C9897A800B88C4B /* Base */; };
+		B7E2FD8C2C989A140081E220 /* CoCardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E2FD8B2C989A140081E220 /* CoCardButton.swift */; };
+		B7E2FD902C989A7B0081E220 /* CoFlipCountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E2FD8F2C989A7B0081E220 /* CoFlipCountLabel.swift */; };
+		B7E2FD922C989AF20081E220 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E2FD912C989AF20081E220 /* View+Ext.swift */; };
+		B7E2FD942C98AF4E0081E220 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E2FD932C98AF4E0081E220 /* Card.swift */; };
+		B7E2FD962C98AFBC0081E220 /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E2FD952C98AFBC0081E220 /* Concentration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +24,14 @@
 		B752E2C02C9897A700B88C4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B752E2C22C9897A700B88C4B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B752E2C42C9897A700B88C4B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B752E2C72C9897A700B88C4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B752E2C92C9897A800B88C4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B752E2CC2C9897A800B88C4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B752E2CE2C9897A800B88C4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B7E2FD8B2C989A140081E220 /* CoCardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoCardButton.swift; sourceTree = "<group>"; };
+		B7E2FD8F2C989A7B0081E220 /* CoFlipCountLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoFlipCountLabel.swift; sourceTree = "<group>"; };
+		B7E2FD912C989AF20081E220 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
+		B7E2FD932C98AF4E0081E220 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		B7E2FD952C98AFBC0081E220 /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +45,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B73D55572C98DBCE007E7A69 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B752E2C42C9897A700B88C4B /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B73D55582C98DBDE007E7A69 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B7E2FD8B2C989A140081E220 /* CoCardButton.swift */,
+				B7E2FD8F2C989A7B0081E220 /* CoFlipCountLabel.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		B73D55592C98DBF9007E7A69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B7E2FD952C98AFBC0081E220 /* Concentration.swift */,
+				B7E2FD932C98AF4E0081E220 /* Card.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B73D555A2C98DC19007E7A69 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B73D555B2C98DC3A007E7A69 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B73D555C2C98DC86007E7A69 /* Ext */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		B73D555C2C98DC86007E7A69 /* Ext */ = {
+			isa = PBXGroup;
+			children = (
+				B7E2FD912C989AF20081E220 /* View+Ext.swift */,
+			);
+			path = Ext;
+			sourceTree = "<group>";
+		};
+		B73D555D2C98DCD7007E7A69 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				B752E2C02C9897A700B88C4B /* AppDelegate.swift */,
+				B752E2C22C9897A700B88C4B /* SceneDelegate.swift */,
+				B752E2CB2C9897A800B88C4B /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		B752E2B42C9897A700B88C4B = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +123,14 @@
 		B752E2BF2C9897A700B88C4B /* Concentrados */ = {
 			isa = PBXGroup;
 			children = (
-				B752E2C02C9897A700B88C4B /* AppDelegate.swift */,
-				B752E2C22C9897A700B88C4B /* SceneDelegate.swift */,
-				B752E2C42C9897A700B88C4B /* ViewController.swift */,
-				B752E2C62C9897A700B88C4B /* Main.storyboard */,
+				B73D555D2C98DCD7007E7A69 /* Support */,
 				B752E2C92C9897A800B88C4B /* Assets.xcassets */,
-				B752E2CB2C9897A800B88C4B /* LaunchScreen.storyboard */,
 				B752E2CE2C9897A800B88C4B /* Info.plist */,
+				B73D555B2C98DC3A007E7A69 /* Utilities */,
+				B73D55582C98DBDE007E7A69 /* Components */,
+				B73D55592C98DBF9007E7A69 /* Model */,
+				B73D555A2C98DC19007E7A69 /* Controllers */,
+				B73D55572C98DBCE007E7A69 /* View */,
 			);
 			path = Concentrados;
 			sourceTree = "<group>";
@@ -127,7 +195,6 @@
 			files = (
 				B752E2CA2C9897A800B88C4B /* Assets.xcassets in Resources */,
 				B752E2CD2C9897A800B88C4B /* Base in Resources */,
-				B752E2C82C9897A700B88C4B /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +206,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B752E2C52C9897A700B88C4B /* ViewController.swift in Sources */,
+				B7E2FD8C2C989A140081E220 /* CoCardButton.swift in Sources */,
+				B7E2FD942C98AF4E0081E220 /* Card.swift in Sources */,
+				B7E2FD922C989AF20081E220 /* View+Ext.swift in Sources */,
+				B7E2FD902C989A7B0081E220 /* CoFlipCountLabel.swift in Sources */,
+				B7E2FD962C98AFBC0081E220 /* Concentration.swift in Sources */,
 				B752E2C12C9897A700B88C4B /* AppDelegate.swift in Sources */,
 				B752E2C32C9897A700B88C4B /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +219,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B752E2C62C9897A700B88C4B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B752E2C72C9897A700B88C4B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B752E2CB2C9897A800B88C4B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -297,7 +361,6 @@
 				INFOPLIST_FILE = Concentrados/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -325,7 +388,6 @@
 				INFOPLIST_FILE = Concentrados/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
