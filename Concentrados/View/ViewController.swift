@@ -9,14 +9,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    lazy var game = Concentration(numberOfPairsOfCards: 4)
+    lazy var game = Concentration(numberOfPairsOfCards: 2)
     
-    var cardButton2 = CoCardButton(withTitle: "")
     var cardButton = CoCardButton(withTitle: "")
-    lazy var cardButtons = [ cardButton, cardButton2 ]
+    var cardButton2 = CoCardButton(withTitle: "")
+    var cardButton3 = CoCardButton(withTitle: "")
+    var cardButton4 = CoCardButton(withTitle: "")
     var flipCountLabel = CoFlipCountLabel(withText: "Flip: 0")
     var flipCount = 0 { didSet { flipCountLabel.flipSum(newValue: "Flip: \(flipCount)")}}
-    var emojiChoices = ["🐶", "🐵", "🐦‍⬛", "🐺"]
+    
+    lazy var cardButtons = [ cardButton, cardButton2, cardButton3, cardButton4 ]
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +29,11 @@ class ViewController: UIViewController {
     private func configUI() {
         view.backgroundColor = .systemBackground
         
-        view.addSubviews(cardButton, cardButton2, flipCountLabel)
+        view.addSubviews(cardButton, cardButton2, cardButton3, cardButton4, flipCountLabel)
         cardButton.addTarget(self, action: #selector(cardButtonAction), for: .touchUpInside)
         cardButton2.addTarget(self, action: #selector(cardButtonAction), for: .touchUpInside)
+        cardButton3.addTarget(self, action: #selector(cardButtonAction), for: .touchUpInside)
+        cardButton4.addTarget(self, action: #selector(cardButtonAction), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             cardButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100),
@@ -40,6 +45,16 @@ class ViewController: UIViewController {
             cardButton2.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             cardButton2.heightAnchor.constraint(equalToConstant: 100),
             cardButton2.widthAnchor.constraint(equalToConstant: 50),
+            
+            cardButton3.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100),
+            cardButton3.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150),
+            cardButton3.heightAnchor.constraint(equalToConstant: 100),
+            cardButton3.widthAnchor.constraint(equalToConstant: 50),
+            
+            cardButton4.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
+            cardButton4.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150),
+            cardButton4.heightAnchor.constraint(equalToConstant: 100),
+            cardButton4.widthAnchor.constraint(equalToConstant: 50),
             
             flipCountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             flipCountLabel.topAnchor.constraint(equalTo: cardButton.bottomAnchor, constant: 100),
@@ -54,24 +69,29 @@ class ViewController: UIViewController {
             let button = cardButtons[index]
             let card = game.cards[index]
             
-            if card.isFaceUp {
-                button.addTitle(title: emoji(for: card), color: .secondaryLabel)
+            if card.isMatched {
+                button.addTitle(title: "", color: .clear)
             } else {
-                button.addTitle(title: "", color: .purple)
+                if card.isFaceUp {
+                    button.addTitle(title: emoji(for: card), color: .secondaryLabel)
+                } else {
+                    button.addTitle(title: "", color: .purple)
+                }
             }
         }
     }
     
-//    func flipCard(withEmoji emoji: String, on button: CoCardButton) {
-//        if !flipCard {
-//            button.addTitle(title: emoji, color: .secondaryLabel)
-//        } else {
-//            button.addTitle(title: "", color: .purple)
-//        }
-//    }
+    
+    var emojiChoices = ["🐶", "🐵", "🐦‍⬛", "🐺"]
+    
+    var emoji = [Int:String]()
     
     func emoji(for card: Card) -> String {
-        return "?"
+        if emoji[card.id] == nil, emojiChoices.count > 0 {
+                let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
+                emoji[card.id] = emojiChoices.remove(at: randomIndex)
+        }
+        return emoji[card.id] ?? "?"
     }
     
     

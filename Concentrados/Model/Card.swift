@@ -9,8 +9,18 @@ import Foundation
 
 struct Card {
     
-    var id = UUID()
+    var id: Int
     var isFaceUp = false
     var isMatched = false
     
+    static var idFactory: Int = 0
+    
+    static func getUniqueId() -> Int {
+        idFactory += 1
+        return idFactory
+    }
+    
+    init() {
+        self.id = Card.getUniqueId()
+    }
 }
