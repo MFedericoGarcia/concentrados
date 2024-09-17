@@ -17,6 +17,10 @@
 		B7E2FD922C989AF20081E220 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E2FD912C989AF20081E220 /* View+Ext.swift */; };
 		B7E2FD942C98AF4E0081E220 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E2FD932C98AF4E0081E220 /* Card.swift */; };
 		B7E2FD962C98AFBC0081E220 /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E2FD952C98AFBC0081E220 /* Concentration.swift */; };
+		B7E495432C99CAF100949A16 /* CoStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E495422C99CAF100949A16 /* CoStackView.swift */; };
+		B7E495452C99CFE800949A16 /* CoFinalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E495442C99CFE800949A16 /* CoFinalStackView.swift */; };
+		B7E495472C99D94100949A16 /* CoNewGameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E495462C99D94100949A16 /* CoNewGameButton.swift */; };
+		B7E495492C99EACE00949A16 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E495482C99EAC600949A16 /* Int+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		B7E2FD912C989AF20081E220 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		B7E2FD932C98AF4E0081E220 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		B7E2FD952C98AFBC0081E220 /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
+		B7E495422C99CAF100949A16 /* CoStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoStackView.swift; sourceTree = "<group>"; };
+		B7E495442C99CFE800949A16 /* CoFinalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoFinalStackView.swift; sourceTree = "<group>"; };
+		B7E495462C99D94100949A16 /* CoNewGameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoNewGameButton.swift; sourceTree = "<group>"; };
+		B7E495482C99EAC600949A16 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,9 @@
 			children = (
 				B7E2FD8B2C989A140081E220 /* CoCardButton.swift */,
 				B7E2FD8F2C989A7B0081E220 /* CoFlipCountLabel.swift */,
+				B7E495422C99CAF100949A16 /* CoStackView.swift */,
+				B7E495442C99CFE800949A16 /* CoFinalStackView.swift */,
+				B7E495462C99D94100949A16 /* CoNewGameButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -89,6 +100,7 @@
 		B73D555C2C98DC86007E7A69 /* Ext */ = {
 			isa = PBXGroup;
 			children = (
+				B7E495482C99EAC600949A16 /* Int+Ext.swift */,
 				B7E2FD912C989AF20081E220 /* View+Ext.swift */,
 			);
 			path = Ext;
@@ -206,13 +218,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				B752E2C52C9897A700B88C4B /* ViewController.swift in Sources */,
+				B7E495432C99CAF100949A16 /* CoStackView.swift in Sources */,
 				B7E2FD8C2C989A140081E220 /* CoCardButton.swift in Sources */,
 				B7E2FD942C98AF4E0081E220 /* Card.swift in Sources */,
+				B7E495472C99D94100949A16 /* CoNewGameButton.swift in Sources */,
+				B7E495452C99CFE800949A16 /* CoFinalStackView.swift in Sources */,
 				B7E2FD922C989AF20081E220 /* View+Ext.swift in Sources */,
 				B7E2FD902C989A7B0081E220 /* CoFlipCountLabel.swift in Sources */,
 				B7E2FD962C98AFBC0081E220 /* Concentration.swift in Sources */,
 				B752E2C12C9897A700B88C4B /* AppDelegate.swift in Sources */,
 				B752E2C32C9897A700B88C4B /* SceneDelegate.swift in Sources */,
+				B7E495492C99EACE00949A16 /* Int+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

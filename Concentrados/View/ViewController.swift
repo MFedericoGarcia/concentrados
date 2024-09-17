@@ -6,20 +6,18 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ViewController: UIViewController {
 
-    lazy var game = Concentration(numberOfPairsOfCards: 2)
+    private lazy var game = Concentration(numberOfPairsOfCards: 12)
+ 
+    private var flipCountLabel = CoFlipCountLabel(withText: "Flip: 0")
+    private(set) var flipCount = 0 { didSet { flipCountLabel.flipSum(newValue: "Flip: \(flipCount)")}}
     
-    var cardButton = CoCardButton(withTitle: "")
-    var cardButton2 = CoCardButton(withTitle: "")
-    var cardButton3 = CoCardButton(withTitle: "")
-    var cardButton4 = CoCardButton(withTitle: "")
-    var flipCountLabel = CoFlipCountLabel(withText: "Flip: 0")
-    var flipCount = 0 { didSet { flipCountLabel.flipSum(newValue: "Flip: \(flipCount)")}}
+    private var newGameButton = CoNewGameButton()
     
-    lazy var cardButtons = [ cardButton, cardButton2, cardButton3, cardButton4 ]
-
+    private var container = CoFinalStackView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,84 +26,59 @@ class ViewController: UIViewController {
     
     private func configUI() {
         view.backgroundColor = .systemBackground
+        view.addSubviews(flipCountLabel, container, newGameButton)
         
-        view.addSubviews(cardButton, cardButton2, cardButton3, cardButton4, flipCountLabel)
-        cardButton.addTarget(self, action: #selector(cardButtonAction), for: .touchUpInside)
-        cardButton2.addTarget(self, action: #selector(cardButtonAction), for: .touchUpInside)
-        cardButton3.addTarget(self, action: #selector(cardButtonAction), for: .touchUpInside)
-        cardButton4.addTarget(self, action: #selector(cardButtonAction), for: .touchUpInside)
-
+        for cardButton in container.cardButtons {
+            cardButton.addTarget(self, action: #selector(cardButtonAction), for: .touchUpInside)
+        }
+        
+        newGameButton.addTarget(self, action: #selector(newButtonAction), for: .touchUpInside)
+        
         NSLayoutConstraint.activate([
-            cardButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100),
-            cardButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            cardButton.heightAnchor.constraint(equalToConstant: 100),
-            cardButton.widthAnchor.constraint(equalToConstant: 50),
             
-            cardButton2.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
-            cardButton2.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            cardButton2.heightAnchor.constraint(equalToConstant: 100),
-            cardButton2.widthAnchor.constraint(equalToConstant: 50),
+            container.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 80),
+            container.bottomAnchor.constraint(equalTo: flipCountLabel.topAnchor, constant: -80),
+            container.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            container.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            cardButton3.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100),
-            cardButton3.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150),
-            cardButton3.heightAnchor.constraint(equalToConstant: 100),
-            cardButton3.widthAnchor.constraint(equalToConstant: 50),
+            flipCountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100),
+            flipCountLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            flipCountLabel.heightAnchor.constraint(equalToConstant: 55),
             
-            cardButton4.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
-            cardButton4.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150),
-            cardButton4.heightAnchor.constraint(equalToConstant: 100),
-            cardButton4.widthAnchor.constraint(equalToConstant: 50),
-            
-            flipCountLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            flipCountLabel.topAnchor.constraint(equalTo: cardButton.bottomAnchor, constant: 100),
-            flipCountLabel.heightAnchor.constraint(equalToConstant: 55)
+            newGameButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
+            newGameButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            newGameButton.heightAnchor.constraint(equalToConstant: 55),
+            newGameButton.widthAnchor.constraint(equalToConstant: 120)
         
         ])
     }
     
-    func updateViewFromModel() {
-        for index in cardButtons.indices {
-            
-            let button = cardButtons[index]
-            let card = game.cards[index]
-            
-            if card.isMatched {
-                button.addTitle(title: "", color: .clear)
-            } else {
-                if card.isFaceUp {
-                    button.addTitle(title: emoji(for: card), color: .secondaryLabel)
-                } else {
-                    button.addTitle(title: "", color: .purple)
-                }
-            }
-        }
-    }
-    
-    
-    var emojiChoices = ["🐶", "🐵", "🐦‍⬛", "🐺"]
-    
-    var emoji = [Int:String]()
-    
-    func emoji(for card: Card) -> String {
-        if emoji[card.id] == nil, emojiChoices.count > 0 {
-                let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
-                emoji[card.id] = emojiChoices.remove(at: randomIndex)
-        }
-        return emoji[card.id] ?? "?"
-    }
-    
-    
-    @objc func cardButtonAction(_ sender: CoCardButton) {
+    @objc func cardButtonAction() {
         flipCount += 1
-        
-        if let cardNumber = cardButtons.firstIndex(of: sender) {
-            game.chooseCard(at: cardNumber)
-            updateViewFromModel()
-        } else {
-            print("oasdajsdiuasdj")
-        }
     }
-
+    
+    @objc func newButtonAction() {
+        flipCount = 0
+        game.newGame(numberOfPairsOfCards: 12)
+    }
 
 }
 
+
+struct ViewControllerRepresentable: UIViewControllerRepresentable {
+    typealias UIViewControllerType = ViewController
+    
+    func makeUIViewController(context: Context) -> ViewController {
+        ViewController()
+    }
+    
+    func updateUIViewController(_ uiViewController: ViewController, context: Context) {
+        
+    }
+}
+
+struct ViewControllerPreviews: PreviewProvider {
+    static var previews: some View {
+        ViewControllerRepresentable()
+    }
+}
