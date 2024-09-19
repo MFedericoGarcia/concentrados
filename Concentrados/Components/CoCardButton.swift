@@ -12,10 +12,13 @@ class CoCardButton: UIButton {
     init(withTitle title: String) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
+    
         configuration = .tinted()
         configuration?.baseForegroundColor = .white
         configuration?.baseBackgroundColor = .purple
         configuration?.title = title
+        
+        titleLabel?.numberOfLines = 1
     }
     
     required init?(coder: NSCoder) {
@@ -25,6 +28,7 @@ class CoCardButton: UIButton {
     public func addTitle(title: String, color: UIColor) {
         configuration?.title = title
         configuration?.baseBackgroundColor = color
+        titleLabel?.textAlignment = .center
     }
     
 }

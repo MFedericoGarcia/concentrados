@@ -7,40 +7,58 @@
 
 import Foundation
 
-class Concentration {
+
+struct Concentration {
     
-    var cards = [Card]()
+    private(set) var cards = [Card]()
+        
+    private var indexOfOneAndOnlyFaceUpCard: Int? {
+        get {
+            let faceUpCards =  cards.indices.filter { cards[$0].isFaceUp }
+            return faceUpCards.count == 1 ? faceUpCards.first : nil
+        }
+        set {
+            for index in cards.indices {
+                cards[index].isFaceUp = (index == newValue)
+            }
+        }
+    }
     
-    var indexOfOneAndOnlyFaceUpCard: Int?
+    mutating public func newGame(numberOfPairsOfCards: Int) {
+
+    }
     
-    func chooseCard(at index: Int) {
+    mutating func chooseCard(at index: Int) {
+        assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)): \(index) is not a valid index for the cards array.")
         
         if !cards[index].isMatched {
             if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
-                if cards[matchIndex].id == cards[index].id {
+                if cards[matchIndex] == cards[index] {
                     cards[matchIndex].isMatched = true
                     cards[index].isMatched = true
                 }
                 cards[index].isFaceUp = true
-                indexOfOneAndOnlyFaceUpCard = nil
             } else {
-                for flipDownIndex in cards.indices {
-                    cards[flipDownIndex].isFaceUp = false
-                }
-                cards[index].isFaceUp = true
                 indexOfOneAndOnlyFaceUpCard = index
             }
         }
     }
     
     init(numberOfPairsOfCards: Int) {
+        assert(numberOfPairsOfCards >= 2, "Concentration.init(\(numberOfPairsOfCards)): numberOfPairsOfCards must be at least 2.")
+        
+        var shuffledCards = [Card]()
         for _ in 0..<numberOfPairsOfCards {
             let card = Card()
-            cards.append(card)
-            cards.append(card)
+            shuffledCards.append(card)
+            shuffledCards.append(card)
         }
         
         // SHUFFLE HOMEWORK
+        
+        cards = shuffledCards.shuffled()
+        
+        
     }
     
 }
